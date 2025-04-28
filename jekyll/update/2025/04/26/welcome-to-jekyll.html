@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Jekyll!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Google Fonts for Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Source Sans Pro', 'sans-serif'], // Set Source Sans Pro as the default font
+                        lora: ['Lora', 'serif'], // Add Lora font
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-sans">
+    <nav id="navbar" class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="text-white text-xl font-bold font-lora drop-shadow-md">Bali Moments</a>
+
+    <!-- Navigation Links -->
+    <div class="hidden md:flex space-x-6">
+      <a href="/" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">Home</a>
+      <a href="/about.html" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">About</a>
+      <a href="/contact.html" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">Contact</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden text-white hover:text-gray-200 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-70 backdrop-blur-sm">
+    <a href="/" class="block px-4 py-2 text-white hover:text-gray-200">Home</a>
+    <a href="/about.html" class="block px-4 py-2 text-white hover:text-gray-200">About</a>
+    <a href="/contact.html" class="block px-4 py-2 text-white hover:text-gray-200">Contact</a>
+  </div>
+</nav>
+
+<script>
+  // Navbar scroll behavior
+  const navbar = document.getElementById('navbar');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      // Add background when scrolled down
+      navbar.classList.add('bg-black', 'bg-opacity-70');
+    } else {
+      // Remove background when at top
+      navbar.classList.remove('bg-black', 'bg-opacity-70');
+    }
+    
+    if (window.scrollY > lastScrollY) {
+      // Hide navbar when scrolling down
+      navbar.style.transform = 'translateY(-100%)';
+    } else {
+      // Show navbar when scrolling up
+      navbar.style.transform = 'translateY(0)';
+    }
+    lastScrollY = window.scrollY;
+  });
+
+  // Toggle mobile menu visibility
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+    <section id="hero" class="h-[100vh] flex items-center relative overflow-hidden">
+    <!-- Background container -->
+    <div id="hero-bg" class="absolute inset-0 z-0" style="background-image: url('/balitour/assets/images/hero-bg6.avif'); background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+    <div class="container mx-auto z-20 px-4">
+        <div class="relative text-white max-w-3xl transform translate-y-16">
+            <h1 class="text-4xl md:text-4xl font-bold mb-4">Nikmati Pengalaman</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Tak terlupakan di Bali</h1>
+            <p class="text-lg md:text-xl mb-6">Paket wisata lengkap untuk liburan tak terlupakan di Pulau Dewata - dari pantai eksotis, pura kuno, hingga pengalaman budaya yang memukau </p>
+            <div class="flex flex-col md:flex-row items-start gap-4">
+                <a href="#" id="contact-btn" class="bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Tanya Paket Wisata
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Inquiry Modal -->
+<div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white text-gray-800 rounded-lg shadow-xl w-full max-w-4xl mx-4 overflow-hidden transform transition-all">
+        <!-- Modal Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-4">
+            <h3 class="text-xl font-bold text-white">Konsultasi Paket Wisata Bali</h3>
+            <button id="close-modal" class="absolute top-3 right-4 text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="p-6 flex flex-col md:flex-row gap-6">
+            <!-- Form Section -->
+            <div class="flex-1">
+                <form id="inquiry-form" class="space-y-4">
+                    <!-- Name Input -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <!-- Budget Selection -->
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Wisata</label>
+                        <select id="budget" name="budget" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="" disabled selected>Pilih rentang budget Anda</option>
+                            <option value="< Rp 5 juta">Kurang dari Rp 5 juta</option>
+                            <option value="Rp 5-10 juta">Rp 5 - 10 juta</option>
+                            <option value="Rp 10-15 juta">Rp 10 - 15 juta</option>
+                            <option value="> Rp 15 juta">Lebih dari Rp 15 juta</option>
+                        </select>
+                    </div>
+
+                    <!-- Length of Stay -->
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Lama Menginap</label>
+                        <select id="duration" name="duration" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="" disabled selected>Pilih durasi liburan</option>
+                            <option value="3 hari">3 hari 2 malam</option>
+                            <option value="4 hari">4 hari 3 malam</option>
+                            <option value="5 hari">5 hari 4 malam</option>
+                            <option value="6+ hari">6+ hari</option>
+                        </select>
+                    </div>
+
+                    <!-- Total Price -->
+                    <div id="total-price-container" class="hidden pt-2">
+                        <span class="block text-sm font-medium text-gray-700 mb-1">Total Harga:</span>
+                        <span id="total-price" class="text-lg font-semibold text-gray-800"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Lanjutkan ke WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Add-ons Selection -->
+            <div class="flex-1">
+                <span class="block text-sm font-medium text-gray-700 mb-2">Fasilitas Tambahan</span>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="500000" data-name="Transportasi">
+                        <img src="/balitour/assets/images/addons/transportasi.jpg" alt="Transportasi Pribadi" class="w-full h-32 object-cover">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Transportasi Pribadi</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 500,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1000000" data-name="Fotografer">
+                        <img src="/balitour/assets/images/addons/fotografer.jpg" alt="Jasa Fotografer" class="w-full h-32 object-cover">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Jasa Fotografer</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 1,000,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="750000" data-name="Guide">
+                        <img src="/balitour/assets/images/addons/guide.jpg" alt="Tour Guide" class="w-full h-32 object-cover">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Tour Guide</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 750,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1500000" data-name="Kuliner">
+                        <img src="/balitour/assets/images/addons/kuliner.jpg" alt="Paket Kuliner" class="w-full h-32 object-cover">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Paket Kuliner Premium</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 1,500,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+    const contactBtn = document.getElementById('contact-btn');
+    const inquiryModal = document.getElementById('inquiry-modal');
+    const closeModal = document.getElementById('close-modal');
+    const inquiryForm = document.getElementById('inquiry-form');
+
+    // Open modal when contact button is clicked
+    contactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      inquiryModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal when close button is clicked
+    closeModal.addEventListener('click', () => {
+      inquiryModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside the content
+    inquiryModal.addEventListener('click', (e) => {
+      if (e.target === inquiryModal) {
+        inquiryModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Handle form submission
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const budget = document.getElementById('budget').value;
+      const duration = document.getElementById('duration').value;
+
+      // Get selected addons from the addon-item elements with 'selected' class
+      const selectedAddonElements = document.querySelectorAll('.addon-item.selected');
+      const addons = Array.from(selectedAddonElements)
+        .map(item => {
+          const addonName = item.getAttribute('data-name');
+          const addonPrice = parseInt(item.getAttribute('data-price'));
+          return {
+            name: addonName,
+            price: addonPrice,
+            formattedPrice: `Rp ${addonPrice.toLocaleString('id-ID')}`
+          };
+        });
+
+      // Create WhatsApp message
+      let message = `Halo! Saya ${name} tertarik dengan paket wisata Bali.\n\n`;
+      message += `Budget: ${budget}\n`;
+      message += `Durasi: ${duration}\n\n`;
+
+      if (addons.length > 0) {
+        message += `Fasilitas Tambahan:\n`;
+        let totalAddons = 0;
+
+        addons.forEach(addon => {
+          message += `- ${addon.name} (${addon.formattedPrice})\n`;
+          totalAddons += addon.price;
+        });
+
+        message += `\nTotal Fasilitas: Rp ${totalAddons.toLocaleString('id-ID')}\n`;
+      }
+
+      message += `\nBisakah Anda memberi informasi lebih lanjut?`;
+
+      // Encode the message for URL
+      const encodedMessage = encodeURIComponent(message);
+
+      // Close modal
+      inquiryModal.classList.add('hidden');
+      document.body.style.overflow = '';
+
+      // Open WhatsApp with the message
+      window.open(`https://wa.me/628123456789?text=${encodedMessage}`, '_blank');
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const addonsCheckboxes = document.querySelectorAll('input[name="addons"]');
+
+    // Reset all checkboxes to unchecked state on page load
+    addonsCheckboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    const totalPriceContainer = document.getElementById('total-price-container');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Add initial opacity styles to enable transitions
+    totalPriceContainer.style.opacity = '0';
+    totalPriceContainer.style.transition = 'opacity 0.3s ease';
+
+    // Prices for each addon
+    const addonPrices = {
+        'Transportasi': 500000,
+        'Fotografer': 1000000,
+        'Guide': 750000,
+        'Kuliner': 1500000
+    };
+
+    // Update total price when checkboxes are toggled
+    addonsCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            let total = 0;
+            addonsCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += addonPrices[cb.value] || 0;
+                }
+            });
+
+            if (total > 0) {
+                totalPriceContainer.classList.remove('hidden');
+                // Use setTimeout to ensure the fade effect works after removing 'hidden'
+                setTimeout(() => {
+                    totalPriceContainer.style.opacity = '1';
+                }, 10);
+                totalPriceElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            } else {
+                totalPriceContainer.style.opacity = '0';
+                setTimeout(() => {
+                    totalPriceContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const addonItems = document.querySelectorAll('.addon-item');
+    const totalPriceElement = document.getElementById('total-price');
+    const totalPriceContainer = document.getElementById('total-price-container');
+
+    // Add initial opacity styles to enable transitions
+    totalPriceContainer.style.opacity = '0';
+    totalPriceContainer.style.transition = 'opacity 0.3s ease';
+
+    let selectedAddons = [];
+
+    addonItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const price = parseInt(item.getAttribute('data-price'));
+            const name = item.getAttribute('data-name');
+
+            if (item.classList.contains('selected')) {
+                item.classList.remove('selected');
+                item.classList.remove('border-blue-500', 'bg-blue-100');
+                item.classList.add('border-gray-300');
+                selectedAddons = selectedAddons.filter(addon => addon.name !== name);
+            } else {
+                item.classList.add('selected');
+                item.classList.remove('border-gray-300');
+                item.classList.add('border-blue-500', 'bg-blue-100');
+                selectedAddons.push({ name, price });
+            }
+
+            const total = selectedAddons.reduce((sum, addon) => sum + addon.price, 0);
+
+            if (total > 0) {
+                totalPriceContainer.classList.remove('hidden');
+                // Use setTimeout to ensure the fade effect works after removing 'hidden'
+                setTimeout(() => {
+                    totalPriceContainer.style.opacity = '1';
+                }, 10);
+                totalPriceElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            } else {
+                totalPriceContainer.style.opacity = '0';
+                setTimeout(() => {
+                    totalPriceContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+    });
+});
+</script>
+    <section class="py-12 bg-gray-50" data-aos="fade-up">
+  <div class="container mx-auto px-6 space-y-0">
+    <!-- Introductory Text -->
+    <div class="text-center pb-5">
+      <h2 class="text-3xl font-bold text-gray-800 font-lora">Hal-hal yang bisa dilihat di Bali 🌴✨</h2>
+      <p class="text-gray-600 mt-2">Yuk, intip beberapa tempat seru yang wajib kamu kunjungi saat liburan di Bali!</p>
+    </div>
+
+    <!-- Highlight 1: Monkey -->
+    <div class="flex flex-col md:flex-row items-stretch" style="height: 500px;">
+      <img src="assets/images/highlight/monkey.avif" alt="Monkey in Bali" class="w-full md:w-1/2 object-cover" style="height: 500px;">
+      <div class="flex flex-col justify-center items-center text-center w-full md:w-1/2 px-8" style="height: 500px;">
+        <h2 class="text-2xl font-bold text-gray-800 font-lora">Monyet Nakal di Ubud 🐒</h2>
+        <p class="text-gray-600 mt-2">Hati-hati ya kalau ke Ubud, monyet-monyet di sini suka iseng banget! Tapi tetap seru kok buat foto-foto dan pengalaman unik. 😄</p>
+      </div>
+    </div>
+
+    <!-- Highlight 2: Canoe -->
+    <div class="flex flex-col md:flex-row-reverse items-stretch" style="height: 500px;">
+      <img src="assets/images/highlight/canoe.avif" alt="Canoe in Bali" class="w-full md:w-1/2 object-cover" style="height: 500px;">
+      <div class="flex flex-col justify-center items-center text-center w-full md:w-1/2 px-8" style="height: 500px;">
+        <h2 class="text-2xl font-bold text-gray-800 font-lora">Canoeing in Bali</h2>
+        <p class="text-gray-600 mt-2">Mau santai sambil mendayung di atas air yang tenang? 🚣‍♂️ Canoeing di Bali adalah pilihan yang pas! Nikmati pemandangan indah, udara segar, dan momen seru yang bikin liburanmu makin berkesan. Jangan lupa selfie, ya! 📸</p>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-800 font-lora">Apa Kata Mereka? 🌟</h2>
+      <p class="text-gray-600 mt-2">Cerita seru dari mereka yang sudah menikmati keindahan Bali!</p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Placeholder image for Sarah" class="w-16 h-16 object-cover rounded-full mx-auto mb-4">
+        <p class="text-gray-600 italic">"Bali benar-benar surga dunia! Pantainya indah, makanannya enak, dan orang-orangnya ramah banget. Liburan terbaik yang pernah saya alami!"</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- Sarah, Jakarta</h3>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Placeholder image for John" class="w-16 h-16 object-cover rounded-full mx-auto mb-4">
+        <p class="text-gray-600 italic">"Saya sangat menikmati waktu saya di Bali. Canoeing di danau yang tenang adalah pengalaman yang tidak akan saya lupakan. Terima kasih Bali Moments!"</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- John, Sydney</h3>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Placeholder image for Maria" class="w-16 h-16 object-cover rounded-full mx-auto mb-4">
+        <p class="text-gray-600 italic">"Monyet-monyet di Canggu memang nakal, tapi itu bagian dari keseruannya! Bali selalu punya cerita unik di setiap sudutnya."</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- Maria, Surabaya</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto px-4">
+    <!-- Footer Content -->
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <!-- Logo and Tagline -->
+      <div class="text-center md:text-left">
+        <h2 class="text-xl font-bold font-lora">Bali Moments</h2>
+        <p class="text-gray-400 text-sm">Liburan terbaik untuk kenangan tak terlupakan 🌴✨</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex space-x-6">
+        <a href="/" class="text-gray-400 hover:text-white text-sm">Home</a>
+        <a href="/about.html" class="text-gray-400 hover:text-white text-sm">About</a>
+        <a href="/contact.html" class="text-gray-400 hover:text-white text-sm">Contact</a>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.917c-1.504 0-1.796.715-1.796 1.763v2.31h3.591l-.467 3.622h-3.124V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.94 13.94 0 011.671 3.149a4.916 4.916 0 001.523 6.573 4.897 4.897 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.918 4.918 0 004.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A9.936 9.936 0 0024 4.557z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.316.975.975 1.254 2.242 1.316 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.316 3.608-.975.975-2.242 1.254-3.608 1.316-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.316-3.608.975-.975 2.242-1.254 3.608-1.316 1.265-.058 1.645-.07 4.849-.07zm0-2.163C8.756 0 8.332.012 7.052.07 5.771.128 4.548.39 3.5 1.438c-1.048 1.048-1.31 2.271-1.368 3.552C2.012 5.756 2 6.18 2 12s.012 6.244.07 7.524c.058 1.281.32 2.504 1.368 3.552 1.048 1.048 2.271 1.31 3.552 1.368C8.332 23.988 8.756 24 12 24s3.668-.012 4.948-.07c1.281-.058 2.504-.32 3.552-1.368 1.048-1.048 1.31-2.271 1.368-3.552.058-1.281.07-1.705.07-7.524s-.012-6.244-.07-7.524c-.058-1.281-.32-2.504-1.368-3.552C19.452.39 18.229.128 16.948.07 15.668.012 15.244 0 12 0z"/>
+            <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-8 text-center text-gray-400 text-sm">
+      &copy; 2025 Bali Moments. All rights reserved.
+    </div>
+  </div>
+</footer>
+    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>Jekyll requires blog post files to be named according to the following format:</p>
+
+<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+
+
+
+    <!-- Social Media Icons - Vertical -->
+    <div id="social-icons" class="fixed bottom-10 right-6 flex flex-col gap-4 z-40">
+      <!-- Instagram -->
+      <a href="https://instagram.com/balitravel" target="_blank" class="bg-black bg-opacity-60 hover:bg-opacity-80 p-2.5 rounded-full backdrop-blur-sm text-white shadow-lg border border-white border-opacity-30 transition-all hover:transform hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://facebook.com/balitravel" target="_blank" class="bg-black bg-opacity-60 hover:bg-opacity-80 p-2.5 rounded-full backdrop-blur-sm text-white shadow-lg border border-white border-opacity-30 transition-all hover:transform hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+        </svg>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/628123456789" target="_blank" class="bg-black bg-opacity-60 hover:bg-opacity-80 p-2.5 rounded-full backdrop-blur-sm text-white shadow-lg border border-white border-opacity-30 transition-all hover:transform hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+      </a>
+    </div>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Source Sans Pro', 'sans-serif'], // Set Source Sans Pro as the default font
+                        lora: ['Lora', 'serif'], // Add Lora font
+                    },
+                },
+            },
+        };
+
+        // Social Icons visibility adjustment based on scroll position
+        document.addEventListener('DOMContentLoaded', () => {
+            // Keep social icons visible against any background
+            const socialIcons = document.getElementById('social-icons');
+
+            // Initial state with higher opacity
+            document.querySelectorAll('#social-icons a').forEach(icon => {
+                icon.classList.add('bg-opacity-60');
+            });
+        });
+    </script>
+</body>
+</html>
