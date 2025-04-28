@@ -25,13 +25,13 @@
     <nav id="navbar" class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300">
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo -->
-    <a href="/" class="text-white text-xl font-bold font-lora drop-shadow-md">Bali Moments</a>
+    <a href="/" class="text-white text-xl font-bold font-lora drop-shadow-lg text-shadow-md">Bali Moments</a>
 
     <!-- Navigation Links -->
     <div class="hidden md:flex space-x-6">
-      <a href="/" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">Home</a>
-      <a href="/about.html" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">About</a>
-      <a href="/contact.html" class="text-white hover:text-gray-200 transition-colors font-medium drop-shadow-sm">Contact</a>
+      <a href="/" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Home</a>
+      <a href="/about.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">About</a>
+      <a href="/contact.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Contact</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -44,9 +44,9 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-70 backdrop-blur-sm">
-    <a href="/" class="block px-4 py-2 text-white hover:text-gray-200">Home</a>
-    <a href="/about.html" class="block px-4 py-2 text-white hover:text-gray-200">About</a>
-    <a href="/contact.html" class="block px-4 py-2 text-white hover:text-gray-200">Contact</a>
+    <a href="/" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Home</a>
+    <a href="/about.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">About</a>
+    <a href="/contact.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Contact</a>
   </div>
 </nav>
 
@@ -54,6 +54,18 @@
   // Navbar scroll behavior
   const navbar = document.getElementById('navbar');
   let lastScrollY = window.scrollY;
+
+  // Add CSS for text shadow
+  const style = document.createElement('style');
+  style.textContent = `
+    .text-shadow-sm {
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .text-shadow-md {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+  `;
+  document.head.appendChild(style);
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -63,7 +75,7 @@
       // Remove background when at top
       navbar.classList.remove('bg-black', 'bg-opacity-70');
     }
-    
+
     if (window.scrollY > lastScrollY) {
       // Hide navbar when scrolling down
       navbar.style.transform = 'translateY(-100%)';
@@ -84,13 +96,13 @@
 </script>
     <section id="hero" class="h-[100vh] flex items-center relative overflow-hidden">
     <!-- Background container -->
-    <div id="hero-bg" class="absolute inset-0 z-0" style="background-image: url('/balitour/assets/images/hero-bg6.avif'); background-size: cover; background-position: center;"></div>
-    <div class="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+    <div id="hero-bg" class="absolute inset-0 z-0" style="background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 z-10"></div>
     <div class="container mx-auto z-20 px-4">
-        <div class="relative text-white max-w-3xl transform translate-y-16">
-            <h1 class="text-4xl md:text-4xl font-bold mb-4">Nikmati Pengalaman</h1>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Tak terlupakan di Bali</h1>
-            <p class="text-lg md:text-xl mb-6">Paket wisata lengkap untuk liburan tak terlupakan di Pulau Dewata - dari pantai eksotis, pura kuno, hingga pengalaman budaya yang memukau </p>
+        <div class="relative text-white max-w-3xl transform translate-y-16 hero-text">
+            <h1 class="text-4xl md:text-4xl font-bold mb-4 text-shadow">Nikmati Pengalaman</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow">Tak terlupakan di Bali</h1>
+            <p class="text-lg md:text-xl mb-6 text-shadow-light">Paket wisata lengkap untuk liburan tak terlupakan di Pulau Dewata - dari pantai eksotis, pura kuno, hingga pengalaman budaya yang memukau </p>
             <div class="flex flex-col md:flex-row items-start gap-4">
                 <a href="#" id="contact-btn" class="bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -101,7 +113,139 @@
             </div>
         </div>
     </div>
+    <!-- Navigation Arrows -->
+    <div class="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 z-30">
+        <button id="prev-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M7 15l5-5 5 5" />
+            </svg>
+        </button>
+        <button id="next-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M7 9l5 5 5-5" />
+            </svg>
+        </button>
+    </div>
 </section>
+
+<style>
+  #hero-bg {
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  .text-shadow-light {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  .hero-text {
+    position: relative;
+  }
+
+  .hero-text:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroSection = document.getElementById('hero');
+    const heroBg = document.getElementById('hero-bg');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const images = [
+      '/balitour/assets/images/hero-bg7.avif',
+      '/balitour/assets/images/hero-bg5.avif',
+      '/balitour/assets/images/hero-bg6.avif',
+      '/balitour/assets/images/hero-bg4.avif'
+    ];
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    // Set initial background
+    heroBg.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+    // Function to change background with crossfade effect
+    function changeBackground(newIndex) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Create overlay div for crossfade effect
+      const nextImage = document.createElement('div');
+      nextImage.style.position = 'absolute';
+      nextImage.style.inset = '0';
+      nextImage.style.backgroundImage = `url('${images[newIndex]}')`;
+      nextImage.style.backgroundSize = 'cover';
+      nextImage.style.backgroundPosition = 'center';
+      nextImage.style.transition = 'opacity 1.5s ease-in-out';
+      nextImage.style.opacity = '0';
+      nextImage.style.zIndex = '0';
+
+      // Add overlay to hero section
+      heroSection.appendChild(nextImage);
+
+      // Small delay to ensure the element is rendered before starting transition
+      setTimeout(() => {
+        nextImage.style.opacity = '1';
+      }, 10);
+
+      // After transition completes
+      setTimeout(() => {
+        // Update the main background
+        heroBg.style.backgroundImage = `url('${images[newIndex]}')`;
+        // Remove the temporary overlay
+        heroSection.removeChild(nextImage);
+        // Update the current index
+        currentIndex = newIndex;
+        isTransitioning = false;
+      }, 1500);
+    }
+
+    // Go to next image
+    function nextImage() {
+      const nextIndex = (currentIndex + 1) % images.length;
+      changeBackground(nextIndex);
+    }
+
+    // Go to previous image
+    function prevImage() {
+      const prevIndex = (currentIndex - 1 + images.length) % images.length;
+      changeBackground(prevIndex);
+    }
+
+    // Add click event listeners to buttons
+    nextBtn.addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      nextImage();
+      autoSlideInterval = setInterval(nextImage, 7000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      prevImage();
+      autoSlideInterval = setInterval(nextImage, 7000);
+    });
+
+    // Change background every 7 seconds
+    let autoSlideInterval = setInterval(nextImage, 7000);
+  });
+
+
+</script>
     <!-- Inquiry Modal -->
 <div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
     <div class="bg-white text-gray-800 rounded-lg shadow-xl w-full max-w-4xl mx-4 overflow-hidden transform transition-all">
