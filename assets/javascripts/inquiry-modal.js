@@ -1,1 +1,138 @@
-document.addEventListener("DOMContentLoaded",()=>{function e(e){if(y)return;y=!0;const t=document.createElement("div");t.style.position="absolute",t.style.inset="0",t.style.backgroundImage=`url('${m[e]}')`,t.style.backgroundSize="cover",t.style.backgroundPosition="center",t.style.transition="opacity 1.5s ease-in-out",t.style.opacity="0",t.style.zIndex="0",a.appendChild(t),setTimeout(()=>{t.style.opacity="1"},10),setTimeout(()=>{d.style.backgroundImage=`url('${m[e]}')`,a.removeChild(t),u=e,y=!1},1500)}function t(){e((u+1)%m.length)}function n(){e((u-1+m.length)%m.length)}const a=document.getElementById("hero"),d=document.getElementById("hero-bg"),l=document.getElementById("prev-btn"),o=document.getElementById("next-btn"),s=document.getElementById("contact-btn"),i=document.getElementById("inquiry-modal"),r=document.getElementById("close-modal"),c=document.getElementById("inquiry-form"),m=[baseUrl+"/assets/images/hero-bg1.avif",baseUrl+"/assets/images/hero-bg2.avif",baseUrl+"/assets/images/hero-bg3.avif",baseUrl+"/assets/images/hero-bg4.avif"];let u=0,y=!1;d.style.backgroundImage=`url('${m[u]}')`,o.addEventListener("click",()=>{clearInterval(g),t(),g=setInterval(t,7e3)}),l.addEventListener("click",()=>{clearInterval(g),n(),g=setInterval(t,7e3)}),s.addEventListener("click",e=>{e.preventDefault(),i.classList.remove("hidden"),document.body.style.overflow="hidden"}),r.addEventListener("click",()=>{i.classList.add("hidden"),document.body.style.overflow=""}),i.addEventListener("click",e=>{e.target===i&&(i.classList.add("hidden"),document.body.style.overflow="")}),c.addEventListener("submit",e=>{e.preventDefault();const t=document.getElementById("name").value,n=document.getElementById("budget").value,a=document.getElementById("duration").value,d=Array.from(document.querySelectorAll('input[name="addons"]:checked')).map(e=>e.value);let l=`Halo! Saya ${t} tertarik dengan paket wisata Bali.\n\n`;l+=`Budget: ${n}\n`,l+=`Durasi: ${a}\n`,d.length>0&&(l+=`Fasilitas tambahan: ${d.join(", ")}\n`),l+="\nBisakah Anda memberi informasi lebih lanjut?";const o=encodeURIComponent(l);i.classList.add("hidden"),document.body.style.overflow="",window.open(`https://wa.me/628123456789?text=${o}`,"_blank")});let g=setInterval(t,7e3)});
+document.addEventListener('DOMContentLoaded', () => {
+  const heroSection = document.getElementById('hero');
+  const heroBg = document.getElementById('hero-bg');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const contactBtn = document.getElementById('contact-btn');
+  const inquiryModal = document.getElementById('inquiry-modal');
+  const closeModal = document.getElementById('close-modal');
+  const inquiryForm = document.getElementById('inquiry-form');
+  
+  // Hero slider images
+  const images = [
+    baseUrl + '/assets/images/hero-bg1.avif',
+    baseUrl + '/assets/images/hero-bg2.avif',
+    baseUrl + '/assets/images/hero-bg3.avif',
+    baseUrl + '/assets/images/hero-bg4.avif'
+  ];
+  let currentIndex = 0;
+  let isTransitioning = false;
+  
+  // Set initial background
+  heroBg.style.backgroundImage = `url('${images[currentIndex]}')`;
+  
+  // Function to change background with crossfade effect
+  function changeBackground(newIndex) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    // Create overlay div for crossfade effect
+    const nextImage = document.createElement('div');
+    nextImage.style.position = 'absolute';
+    nextImage.style.inset = '0';
+    nextImage.style.backgroundImage = `url('${images[newIndex]}')`;
+    nextImage.style.backgroundSize = 'cover';
+    nextImage.style.backgroundPosition = 'center';
+    nextImage.style.transition = 'opacity 1.5s ease-in-out';
+    nextImage.style.opacity = '0';
+    nextImage.style.zIndex = '0';
+    
+    // Add overlay to hero section
+    heroSection.appendChild(nextImage);
+    
+    // Small delay to ensure the element is rendered before starting transition
+    setTimeout(() => {
+      nextImage.style.opacity = '1';
+    }, 10);
+    
+    // After transition completes
+    setTimeout(() => {
+      // Update the main background
+      heroBg.style.backgroundImage = `url('${images[newIndex]}')`;
+      // Remove the temporary overlay
+      heroSection.removeChild(nextImage);
+      // Update the current index
+      currentIndex = newIndex;
+      isTransitioning = false;
+    }, 1500);
+  }
+  
+  // Go to next image
+  function nextImage() {
+    const nextIndex = (currentIndex + 1) % images.length;
+    changeBackground(nextIndex);
+  }
+  
+  // Go to previous image
+  function prevImage() {
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    changeBackground(prevIndex);
+  }
+  
+  // Add click event listeners to navigation buttons
+  nextBtn.addEventListener('click', () => {
+    clearInterval(autoSlideInterval);
+    nextImage();
+    autoSlideInterval = setInterval(nextImage, 7000);
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    clearInterval(autoSlideInterval);
+    prevImage();
+    autoSlideInterval = setInterval(nextImage, 7000);
+  });
+  
+  // Modal functionality
+  contactBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    inquiryModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  closeModal.addEventListener('click', () => {
+    inquiryModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+  
+  inquiryModal.addEventListener('click', (e) => {
+    if (e.target === inquiryModal) {
+      inquiryModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  inquiryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const budget = document.getElementById('budget').value;
+    const duration = document.getElementById('duration').value;
+    
+    // Get selected addons
+    const addons = Array.from(document.querySelectorAll('input[name="addons"]:checked'))
+      .map(checkbox => checkbox.value);
+    
+    // Create WhatsApp message
+    let message = `Halo! Saya ${name} tertarik dengan paket wisata Bali.\n\n`;
+    message += `Budget: ${budget}\n`;
+    message += `Durasi: ${duration}\n`;
+    if (addons.length > 0) {
+      message += `Fasilitas tambahan: ${addons.join(', ')}\n`;
+    }
+    message += `\nBisakah Anda memberi informasi lebih lanjut?`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Close modal
+    inquiryModal.classList.add('hidden');
+    document.body.style.overflow = '';
+    
+    // Open WhatsApp with the message
+    window.open(`https://wa.me/628123456789?text=${encodedMessage}`, '_blank');
+  });
+  
+  // Change background every 7 seconds
+  let autoSlideInterval = setInterval(nextImage, 7000);
+});

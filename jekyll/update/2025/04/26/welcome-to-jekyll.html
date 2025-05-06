@@ -1,5 +1,991 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Welcome to Jekyll!</title> <script src="https://cdn.tailwindcss.com"></script> <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet"> <script>tailwind.config={theme:{extend:{fontFamily:{sans:["Source Sans Pro","sans-serif"],lora:["Lora","serif"]}}}};</script> </head> <body class="font-sans"> <nav id="navbar" class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300"> <div class="container mx-auto flex justify-center items-center"> <div class="hidden md:flex space-x-3 mr-6"> <a href="/" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Home</a> <a href="/about.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">About</a> </div> <a href="/" class="text-white text-xl font-bold font-lora drop-shadow-lg text-shadow-md mx-4">Bali Moments</a> <div class="hidden md:flex space-x-3 ml-6"> <a href="/contact.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Contact</a> </div> <button id="menu-toggle" class="md:hidden absolute right-4 text-white hover:text-gray-200 focus:outline-none"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/> </svg> </button> </div> <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-70 backdrop-blur-sm"> <a href="/" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Home</a> <a href="/about.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">About</a> <a href="/contact.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Contact</a> </div> </nav> <script>const navbar=document.getElementById("navbar");let lastScrollY=window.scrollY;const style=document.createElement("style");style.textContent="\n    .text-shadow-sm {\n      text-shadow: 0 1px 2px rgba(0,0,0,0.5);\n    }\n    .text-shadow-md {\n      text-shadow: 0 2px 4px rgba(0,0,0,0.6);\n    }\n  ",document.head.appendChild(style),window.addEventListener("scroll",()=>{window.scrollY>100?navbar.classList.add("bg-black","bg-opacity-70"):navbar.classList.remove("bg-black","bg-opacity-70"),window.scrollY>lastScrollY?navbar.style.transform="translateY(-100%)":0===window.scrollY&&(navbar.style.transform="translateY(0)"),lastScrollY=window.scrollY});const menuToggle=document.getElementById("menu-toggle"),mobileMenu=document.getElementById("mobile-menu");menuToggle.addEventListener("click",()=>{mobileMenu.classList.toggle("hidden")});</script> <section id="hero" class="h-[120vh] flex items-start justify-center relative overflow-hidden"> <div id="hero-bg" class="absolute inset-0 z-0" style="background-size: cover; background-position: center;"></div> <div class="absolute inset-0 z-10"></div> <div class="container relative mx-auto z-20 px-4 flex justify-center pt-80"> <div class="relative text-white max-w-3xl hero-text text-center"> <h1 class="text-4xl md:text-4xl font-bold mb-4 text-shadow">Nikmati Pengalaman</h1> <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow">Tak terlupakan di Bali</h1> <p class="text-lg md:text-xl mb-6 text-shadow-light">Paket wisata lengkap untuk liburan tak terlupakan di Pulau Dewata - dari pantai eksotis, pura kuno, hingga pengalaman budaya yang memukau </p> <div class="flex flex-col md:flex-row items-center justify-center gap-4"> <a href="#" class="contact-btn bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg> Tanya Paket Wisata </a> </div> </div> </div> <div class="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 z-30"> <button id="prev-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="M7 15l5-5 5 5"/> </svg> </button> <button id="next-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"> <path d="M7 9l5 5 5-5"/> </svg> </button> </div> </section> <style>#hero-bg{background-size:cover;background-position:center;transition:background-image .5s ease-in-out}.text-shadow{text-shadow:0 2px 4px rgba(0,0,0,0.5),0 0 15px rgba(0,0,0,0.3)}.text-shadow-light{text-shadow:0 1px 3px rgba(0,0,0,0.4),0 0 10px rgba(0,0,0,0.2)}.hero-text{position:relative}.hero-text:before{content:"";position:absolute;left:-20px;right:-20px;top:-20px;bottom:-20px;background:radial-gradient(ellipse at center,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 70%);z-index:-1;border-radius:50%;pointer-events:none}#hero{position:relative;overflow:hidden}#hero:after{content:"";position:absolute;bottom:-2px;left:0;width:100%;height:150px;background:url("data:image/svg+xml,%3Csvgxmlns='http://www.w3.org/2000/svg'viewBox='001440320'preserveAspectRatio='none'%3E%3Cpathfill='%23f2efe6'd='M0,160C144,128,216,192,360,192C504,192,576,128,720,128C864,128,936,192,1080,192C1224,192,1296,128,1440,160L1440,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;background-size:100% 150px;z-index:10;opacity:1;transform:translateY(0)}</style> <script>document.addEventListener("DOMContentLoaded",()=>{function e(e){if(c)return;c=!0;const t=document.createElement("div");t.style.position="absolute",t.style.inset="0",t.style.backgroundImage=`url('${i[e]}')`,t.style.backgroundSize="cover",t.style.backgroundPosition="center",t.style.transition="opacity 1.5s ease-in-out",t.style.opacity="0",t.style.zIndex="0",s.appendChild(t),setTimeout(()=>{t.style.opacity="1"},10),setTimeout(()=>{a.style.backgroundImage=`url('${i[e]}')`,s.removeChild(t),r=e,c=!1},1500)}function t(){e((r+1)%i.length)}function n(){e((r-1+i.length)%i.length)}const s=document.getElementById("hero"),a=document.getElementById("hero-bg"),o=document.getElementById("prev-btn"),l=document.getElementById("next-btn"),i=["/balitour/assets/images/hero-bg1.avif","/balitour/assets/images/hero-bg2.avif","/balitour/assets/images/hero-bg3.avif","/balitour/assets/images/hero-bg4.avif"];let r=0,c=!1;a.style.backgroundImage=`url('${i[r]}')`,l.addEventListener("click",()=>{clearInterval(d),t(),d=setInterval(t,7e3)}),o.addEventListener("click",()=>{clearInterval(d),n(),d=setInterval(t,7e3)});let d=setInterval(t,7e3)});</script> <div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden"> <div class="bg-white text-gray-800 rounded-lg shadow-xl w-full max-w-4xl mx-4 overflow-hidden transform transition-all"> <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-4"> <h3 class="text-xl font-bold text-white">Konsultasi Paket Wisata Bali</h3> <button id="close-modal" class="absolute top-3 right-4 text-white hover:text-gray-200"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/> </svg> </button> </div> <div class="p-6 flex flex-col md:flex-row gap-6"> <div class="flex-1"> <form id="inquiry-form" class="space-y-4"> <div> <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label> <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required> </div> <div> <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Wisata</label> <select id="budget" name="budget" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required> <option value="" disabled selected>Pilih rentang budget Anda</option> <option value="< Rp 5 juta">Kurang dari Rp 5 juta</option> <option value="Rp 5-10 juta">Rp 5 - 10 juta</option> <option value="Rp 10-15 juta">Rp 10 - 15 juta</option> <option value="> Rp 15 juta">Lebih dari Rp 15 juta</option> </select> </div> <div> <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Lama Menginap</label> <select id="duration" name="duration" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required> <option value="" disabled selected>Pilih durasi liburan</option> <option value="3 hari">3 hari 2 malam</option> <option value="4 hari">4 hari 3 malam</option> <option value="5 hari">5 hari 4 malam</option> <option value="6+ hari">6+ hari</option> </select> </div> <div id="total-price-container" class="hidden pt-2"> <span class="block text-sm font-medium text-gray-700 mb-1">Total Harga:</span> <span id="total-price" class="text-lg font-semibold text-gray-800"></span> </div> <div class="pt-2"> <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg> Lanjutkan ke WhatsApp </button> </div> </form> </div> <div class="flex-1"> <span class="block text-sm font-medium text-gray-700 mb-2">Fasilitas Tambahan</span> <div class="grid grid-cols-2 gap-4"> <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="500000" data-name="Transportasi"> <img src="/balitour/assets/images/addons/transportasi.jpg" alt="Transportasi Pribadi" class="w-full h-32 object-cover" loading="lazy"> <div class="p-2 text-center"> <span class="text-sm text-gray-600">Transportasi Pribadi</span> <span class="block text-sm font-bold text-gray-800">Rp 500,000</span> </div> </div> <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1000000" data-name="Fotografer"> <img src="/balitour/assets/images/addons/fotografer.jpg" alt="Jasa Fotografer" class="w-full h-32 object-cover" loading="lazy"> <div class="p-2 text-center"> <span class="text-sm text-gray-600">Jasa Fotografer</span> <span class="block text-sm font-bold text-gray-800">Rp 1,000,000</span> </div> </div> <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="750000" data-name="Guide"> <img src="/balitour/assets/images/addons/guide.jpg" alt="Tour Guide" class="w-full h-32 object-cover" loading="lazy"> <div class="p-2 text-center"> <span class="text-sm text-gray-600">Tour Guide</span> <span class="block text-sm font-bold text-gray-800">Rp 750,000</span> </div> </div> <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1500000" data-name="Kuliner"> <img src="/balitour/assets/images/addons/kuliner.jpg" alt="Paket Kuliner" class="w-full h-32 object-cover" loading="lazy"> <div class="p-2 text-center"> <span class="text-sm text-gray-600">Paket Kuliner Premium</span> <span class="block text-sm font-bold text-gray-800">Rp 1,500,000</span> </div> </div> </div> </div> </div> </div> </div> <script>document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".contact-btn"),t=document.getElementById("inquiry-modal"),n=document.getElementById("close-modal"),a=document.getElementById("inquiry-form");e.forEach(e=>{e.addEventListener("click",e=>{e.preventDefault(),t.classList.remove("hidden"),document.body.style.overflow="hidden"})}),n.addEventListener("click",()=>{t.classList.add("hidden"),document.body.style.overflow=""}),t.addEventListener("click",e=>{e.target===t&&(t.classList.add("hidden"),document.body.style.overflow="")}),a.addEventListener("submit",e=>{e.preventDefault();const n=document.getElementById("name").value,a=document.getElementById("budget").value,d=document.getElementById("duration").value,o=document.querySelectorAll(".addon-item.selected"),i=Array.from(o).map(e=>{const t=e.getAttribute("data-name"),n=parseInt(e.getAttribute("data-price"));return{name:t,price:n,formattedPrice:`Rp ${n.toLocaleString("id-ID")}`}});let s=`Halo! Saya ${n} tertarik dengan paket wisata Bali.\n\n`;if(s+=`Budget: ${a}\n`,s+=`Durasi: ${d}\n\n`,i.length>0){s+="Fasilitas Tambahan:\n";let e=0;i.forEach(t=>{s+=`- ${t.name} (${t.formattedPrice})\n`,e+=t.price}),s+=`\nTotal Fasilitas: Rp ${e.toLocaleString("id-ID")}\n`}s+="\nBisakah Anda memberi informasi lebih lanjut?";const c=encodeURIComponent(s);t.classList.add("hidden"),document.body.style.overflow="",window.open(`https://wa.me/628123456789?text=${c}`,"_blank")})}),document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll('input[name="addons"]');e.forEach(e=>{e.checked=!1});const t=document.getElementById("total-price-container"),n=document.getElementById("total-price");t.style.opacity="0",t.style.transition="opacity 0.3s ease";const a={Transportasi:5e5,Fotografer:1e6,Guide:75e4,Kuliner:15e5};e.forEach(d=>{d.addEventListener("change",()=>{let d=0;e.forEach(e=>{e.checked&&(d+=a[e.value]||0)}),d>0?(t.classList.remove("hidden"),setTimeout(()=>{t.style.opacity="1"},10),n.textContent=`Rp ${d.toLocaleString("id-ID")}`):(t.style.opacity="0",setTimeout(()=>{t.classList.add("hidden")},300))})})}),document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".addon-item"),t=document.getElementById("total-price"),n=document.getElementById("total-price-container");n.style.opacity="0",n.style.transition="opacity 0.3s ease";let a=[];e.forEach(e=>{e.addEventListener("click",()=>{const d=parseInt(e.getAttribute("data-price")),o=e.getAttribute("data-name");e.classList.contains("selected")?(e.classList.remove("selected"),e.classList.remove("border-blue-500","bg-blue-100"),e.classList.add("border-gray-300"),a=a.filter(e=>e.name!==o)):(e.classList.add("selected"),e.classList.remove("border-gray-300"),e.classList.add("border-blue-500","bg-blue-100"),a.push({name:o,price:d}));const i=a.reduce((e,t)=>e+t.price,0);i>0?(n.classList.remove("hidden"),setTimeout(()=>{n.style.opacity="1"},10),t.textContent=`Rp ${i.toLocaleString("id-ID")}`):(n.style.opacity="0",setTimeout(()=>{n.classList.add("hidden")},300))})})});</script> <section class="py-16 bg-[#f2efe6] text-gray-800 relative overflow-hidden"> <div class="absolute top-0 left-0 h-full w-full opacity-10 pointer-events-none"> <img src="assets/images/pura.jpg" alt="" class="h-full object-cover" loading="lazy"> </div> <div class="container mx-auto px-6 max-w-6xl relative z-10"> <div class="flex flex-col md:flex-row items-center md:items-start gap-10"> <div class="w-full md:w-1/2"> <h3 class="text-xl font-semibold text-[#3d7a41] mb-2">Kami yang Terbaik</h3> <h2 class="text-5xl font-bold text-gray-800 mb-6 font-display italic">Tentang Kami</h2> <p class="text-gray-700 mb-6"> Tur kami menawarkan berbagai tujuan yang memenuhi beragam minat wisatawan. Mulai dari pantai berpasir yang dibasuh matahari dengan lautan biru yang jernih, hingga pemandangan pegunungan yang menakjubkan, danau yang tenang, dan hutan yang rimbun, kami siap melayani Anda. </p> <p class="text-gray-700 mb-8"> Jangan sia-siakan kesempatan ini! Kami memiliki penawaran menarik: 50 orang pertama yang mendaftar untuk tur akan menerima diskon 15% untuk pembelian dari mitra kami. </p> <a href="#" class="contact-btn inline-block border-2 border-[#3d7a41] text-[#3d7a41] hover:bg-[#3d7a41] hover:text-white px-8 py-3 rounded-md font-semibold transition-all duration-300 flex items-center space-x-2"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/> </svg> <span>Tanya Paket Wisata</span> </a> </div> <div class="w-full md:w-1/2 relative h-[500px]"> <div class="absolute right-0 top-0 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 1;"> <img src="assets/images/highlight/buah.avif" alt="Buah di Bali" class="w-full h-full object-cover" loading="lazy"> </div> <div class="absolute right-28 top-10 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 2;"> <img src="assets/images/highlight/sunset.avif" alt="Matahari terbenam di Bali" class="w-full h-full object-cover" loading="lazy"> </div> <div class="absolute right-14 top-36 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 3;"> <img src="assets/images/highlight/ricefield.avif" alt="Sawah di Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> </div> <div class="absolute bottom-10 right-10 opacity-10 pointer-events-none"> <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5"> <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path> <circle cx="12" cy="10" r="3"></circle> </svg> </div> </section> <section class="py-16 bg-[#f2efe6]" data-aos="fade-up"> <div class="container mx-auto px-6 max-w-6xl"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-gray-800 font-lora">Mengapa Memilih Kami</h2> <p class="text-gray-600 mt-4 max-w-3xl mx-auto">Kami tidak hanya menawarkan perjalanan, tetapi pengalaman berharga yang akan menjadi kenangan seumur hidup</p> </div> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow"> <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/> </svg> </div> <h3 class="text-xl font-semibold text-gray-800 mb-3">Pengalaman Otentik</h3> <p class="text-gray-600">Kami menghubungkan Anda dengan pengalaman lokal yang asli, bukan hanya destinasi turis umum. Rasakan Bali yang sesungguhnya melalui mata penduduk setempat.</p> </div> <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow"> <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/> </svg> </div> <h3 class="text-xl font-semibold text-gray-800 mb-3">Pemandu Lokal Berpengalaman</h3> <p class="text-gray-600">Pemandu kami adalah penduduk asli Bali yang menguasai budaya, sejarah, dan rahasia tersembunyi pulau ini. Mereka akan membuat perjalanan Anda lebih bermakna.</p> </div> <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow"> <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4"> <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/> </svg> </div> <h3 class="text-xl font-semibold text-gray-800 mb-3">Paket yang Dapat Disesuaikan</h3> <p class="text-gray-600">Tidak ada dua pelanggan yang identik. Kami menyesuaikan setiap perjalanan berdasarkan minat, anggaran, dan waktu Anda untuk pengalaman yang benar-benar personal.</p> </div> </div> <div class="mt-12 text-center"> <p class="text-gray-600 italic">"Kami telah membawa lebih dari 10,000 pelancong untuk mengalami keajaiban Bali selama 15 tahun terakhir"</p> <div class="flex justify-center gap-4 mt-6"> <div class="flex items-center"> <div class="flex space-x-1"> <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> </div> <span class="ml-2 text-gray-800 font-semibold">4.9/5</span> </div> <span class="text-gray-600">dari 500+ ulasan pelanggan</span> </div> </div> </div> </section> <section class="py-16 bg-[#f2efe6]" data-aos="fade-up"> <div class="container mx-auto px-6 max-w-6xl"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-gray-800 font-lora">Destinasi Populer di Bali</h2> <p class="text-gray-600 mt-4 max-w-3xl mx-auto">Jelajahi tempat-tempat menakjubkan yang dapat Anda kunjungi selama perjalanan Anda</p> </div> <div class="flex flex-wrap justify-center gap-3 mb-10"> <button class="destination-btn px-6 py-2 rounded-full bg-[#e6b97a] text-white font-medium hover:bg-[#d4a76c] transition-colors active" data-destination="ubud">Ubud</button> <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="denpasar">Denpasar</button> <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="sanur">Sanur</button> <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="kuta">Kuta</button> <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="uluwatu">Uluwatu</button> </div> <div class="destination-content-wrapper"> <div class="destination-content flex flex-col md:flex-row gap-8 active" id="ubud-content"> <div class="w-full md:w-1/2"> <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ubud: Pusat Budaya & Seni Bali</h3> <p class="text-gray-600 mb-4">Ubud merupakan jantung budaya dan seni di Bali, terletak di tengah pedalaman pulau di antara sawah bertingkat dan hutan hujan yang lebat. Dikenal sebagai pusat kesenian dan kerajinan Bali, Ubud menawarkan pengalaman yang menenangkan jauh dari keramaian pantai.</p> <p class="text-gray-600 mb-4">Di Ubud, Anda dapat mengunjungi galeri seni lokal, menyaksikan pertunjukan tari tradisional, mengikuti kelas yoga, atau sekadar berjalan-jalan di Monkey Forest yang terkenal. Kawasan ini juga dikenal dengan sawahnya yang menakjubkan, terutama di Tegallalang.</p> <div class="flex flex-wrap gap-4 mt-6"> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Seni & Budaya</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Alam & Hutan</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Monkey Forest</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sawah Bertingkat</span> </div> </div> <div class="w-full md:w-1/2"> <div class="h-96 rounded-lg overflow-hidden shadow-lg"> <img src="assets/images/destinations/ubud.avif" alt="Ubud in Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="denpasar-content"> <div class="w-full md:w-1/2"> <h3 class="text-2xl font-semibold text-gray-800 mb-4">Denpasar: Ibu Kota Bali yang Dinamis</h3> <p class="text-gray-600 mb-4">Denpasar adalah ibu kota dan kota terbesar di Bali, menawarkan perpaduan unik antara kehidupan modern dan tradisi Bali. Sebagai pusat pemerintahan dan bisnis, kota ini berdenyut dengan aktivitas sepanjang hari.</p> <p class="text-gray-600 mb-4">Kunjungi Pasar Badung untuk merasakan suasana pasar tradisional yang ramai, atau lihat koleksi seni dan artefak sejarah di Museum Bali. Jangan lewatkan Monumen Bajra Sandhi yang mengesankan, yang mengenang perjuangan rakyat Bali untuk kemerdekaan.</p> <div class="flex flex-wrap gap-4 mt-6"> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Kota & Kehidupan Urban</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pasar Tradisional</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Museum</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Monumen Sejarah</span> </div> </div> <div class="w-full md:w-1/2"> <div class="h-96 rounded-lg overflow-hidden shadow-lg"> <img src="assets/images/destinations/denpasar.avif" alt="Denpasar in Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="sanur-content"> <div class="w-full md:w-1/2"> <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sanur: Pantai Tenang dengan Pesona Klasik</h3> <p class="text-gray-600 mb-4">Sanur adalah kawasan pantai yang tenang dan lebih santai di timur Bali, sempurna bagi mereka yang mencari suasana yang lebih damai dibandingkan dengan area wisata lainnya. Dengan pantai berpasir putih yang landai dan perairan yang tenang, Sanur cocok untuk keluarga dan wisatawan yang lebih dewasa.</p> <p class="text-gray-600 mb-4">Nikmati matahari terbit yang spektakuler, jelajahi jalur pantai sepanjang 5 km yang diperkeras, atau berlayar dengan perahu tradisional. Sanur juga memiliki beragam restoran, kafe, dan butik yang menarik untuk dijelajahi.</p> <div class="flex flex-wrap gap-4 mt-6"> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pantai Tenang</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sunrise View</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Olahraga Air</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Jalur Bersepeda</span> </div> </div> <div class="w-full md:w-1/2"> <div class="h-96 rounded-lg overflow-hidden shadow-lg"> <img src="assets/images/destinations/sanur.avif" alt="Sanur in Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="kuta-content"> <div class="w-full md:w-1/2"> <h3 class="text-2xl font-semibold text-gray-800 mb-4">Kuta: Surga Peselancar & Kehidupan Malam</h3> <p class="text-gray-600 mb-4">Kuta adalah salah satu daerah wisata paling terkenal di Bali, dengan pantai berpasir panjang yang ideal untuk berselancar dan menikmati matahari terbenam yang menakjubkan. Area ini terkenal dengan kehidupan malam yang ramai, berbagai pilihan belanja, dan suasana liburan yang semarak.</p> <p class="text-gray-600 mb-4">Bagi pemula dalam berselancar, Kuta menawarkan kondisi ombak yang sempurna dan banyak sekolah selancar. Setelah matahari terbenam, jelajahi berbagai klub malam yang ramai, restoran internasional, dan pasar tradisional di sepanjang Jalan Legian.</p> <div class="flex flex-wrap gap-4 mt-6"> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Surfing</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sunset Beach</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Nightlife</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Shopping</span> </div> </div> <div class="w-full md:w-1/2"> <div class="h-96 rounded-lg overflow-hidden shadow-lg"> <img src="assets/images/destinations/kuta.avif" alt="Kuta in Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="uluwatu-content"> <div class="w-full md:w-1/2"> <h3 class="text-2xl font-semibold text-gray-800 mb-4">Uluwatu: Tebing Spektakuler & Pura Kuno</h3> <p class="text-gray-600 mb-4">Terletak di ujung selatan semenanjung Bukit di Bali, Uluwatu terkenal dengan tebing kapur yang spektakuler dan salah satu pura paling suci di Bali, Pura Luhur Uluwatu. Kawasan ini menawarkan pemandangan laut yang menakjubkan dan beberapa pantai tersembunyi yang indah.</p> <p class="text-gray-600 mb-4">Saksikan pertunjukan tari Kecak tradisional saat matahari terbenam di Pura Uluwatu, atau nikmati ombak kelas dunia di beberapa titik selancar terbaik di Bali seperti Padang Padang, Bingin, dan Dreamland. Uluwatu juga menjadi rumah bagi resor mewah dan beach club eksklusif.</p> <div class="flex flex-wrap gap-4 mt-6"> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pura & Candi</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Tebing Dramatis</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Tari Kecak</span> <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Surfing Pro</span> </div> </div> <div class="w-full md:w-1/2"> <div class="h-96 rounded-lg overflow-hidden shadow-lg"> <img src="assets/images/destinations/uluwatu.avif" alt="Uluwatu in Bali" class="w-full h-full object-cover" loading="lazy"> </div> </div> </div> </div> </div> <script>document.addEventListener("DOMContentLoaded",function(){const t=document.querySelectorAll(".destination-btn"),e=document.querySelectorAll(".destination-content");t.forEach(a=>{a.addEventListener("click",()=>{const n=a.getAttribute("data-destination");t.forEach(t=>{t.classList.remove("active","bg-[#e6b97a]","text-white"),t.classList.add("bg-gray-200","text-gray-700")}),a.classList.add("active","bg-[#e6b97a]","text-white"),a.classList.remove("bg-gray-200","text-gray-700"),e.forEach(t=>{t.classList.add("hidden")}),document.getElementById(`${n}-content`).classList.remove("hidden")})})});</script> </section> <section class="py-12 bg-white"> <div class="container mx-auto px-4"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-gray-800 font-lora">Apa Kata Mereka? 🌟</h2> <p class="text-gray-600 mt-2">Cerita seru dari mereka yang sudah menikmati keindahan Bali!</p> </div> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="bg-gray-50 p-6 rounded-lg shadow-md"> <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Placeholder image for Sarah" class="w-16 h-16 object-cover rounded-full mx-auto mb-4"> <p class="text-gray-600 italic">"Bali benar-benar surga dunia! Pantainya indah, makanannya enak, dan orang-orangnya ramah banget. Liburan terbaik yang pernah saya alami!"</p> <div class="mt-4 text-right"> <h3 class="text-lg font-bold text-gray-800">- Sarah, Jakarta</h3> </div> </div> <div class="bg-gray-50 p-6 rounded-lg shadow-md"> <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Placeholder image for John" class="w-16 h-16 object-cover rounded-full mx-auto mb-4"> <p class="text-gray-600 italic">"Saya sangat menikmati waktu saya di Bali. Canoeing di danau yang tenang adalah pengalaman yang tidak akan saya lupakan. Terima kasih Bali Moments!"</p> <div class="mt-4 text-right"> <h3 class="text-lg font-bold text-gray-800">- John, Sydney</h3> </div> </div> <div class="bg-gray-50 p-6 rounded-lg shadow-md"> <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Placeholder image for Maria" class="w-16 h-16 object-cover rounded-full mx-auto mb-4"> <p class="text-gray-600 italic">"Monyet-monyet di Canggu memang nakal, tapi itu bagian dari keseruannya! Bali selalu punya cerita unik di setiap sudutnya."</p> <div class="mt-4 text-right"> <h3 class="text-lg font-bold text-gray-800">- Maria, Surabaya</h3> </div> </div> </div> </div> </section> <button id="scrollToTop" class="fixed bottom-8 right-8 bg-black bg-opacity-70 text-white w-12 h-12 rounded-full shadow-lg opacity-0 transition-opacity duration-300 flex items-center justify-center hover:bg-opacity-90"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/> </svg> </button> <script>const scrollToTopBtn=document.getElementById("scrollToTop");window.addEventListener("scroll",()=>{window.scrollY>.75*(document.documentElement.scrollHeight-window.innerHeight)?(scrollToTopBtn.classList.remove("opacity-0"),scrollToTopBtn.classList.add("opacity-100")):(scrollToTopBtn.classList.remove("opacity-100"),scrollToTopBtn.classList.add("opacity-0"))}),scrollToTopBtn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});</script> <style>@keyframes pulseShadow{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.02);opacity:.9}}.animate-pulse-subtle{animation:pulseShadow .8s ease-in-out}</style> <footer class="bg-gray-800 text-white py-8"> <div class="container mx-auto px-4"> <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> <div class="text-center md:text-left"> <h2 class="text-xl font-bold font-lora">Bali Moments</h2> <p class="text-gray-400 text-sm">Liburan terbaik untuk kenangan tak terlupakan 🌴✨</p> </div> <div class="flex space-x-6"> <a href="/" class="text-gray-400 hover:text-white text-sm">Home</a> <a href="/about.html" class="text-gray-400 hover:text-white text-sm">About</a> <a href="/contact.html" class="text-gray-400 hover:text-white text-sm">Contact</a> </div> <div class="flex space-x-4"> <a href="#" class="text-gray-400 hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.917c-1.504 0-1.796.715-1.796 1.763v2.31h3.591l-.467 3.622h-3.124V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/> </svg> </a> <a href="#" class="text-gray-400 hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.94 13.94 0 011.671 3.149a4.916 4.916 0 001.523 6.573 4.897 4.897 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.918 4.918 0 004.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A9.936 9.936 0 0024 4.557z"/> </svg> </a> <a href="#" class="text-gray-400 hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.316.975.975 1.254 2.242 1.316 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.316 3.608-.975.975-2.242 1.254-3.608 1.316-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.316-3.608.975-.975 2.242-1.254 3.608-1.316 1.265-.058 1.645-.07 4.849-.07zm0-2.163C8.756 0 8.332.012 7.052.07 5.771.128 4.548.39 3.5 1.438c-1.048 1.048-1.31 2.271-1.368 3.552C2.012 5.756 2 6.18 2 12s.012 6.244.07 7.524c.058 1.281.32 2.504 1.368 3.552 1.048 1.048 2.271 1.31 3.552 1.368C8.332 23.988 8.756 24 12 24s3.668-.012 4.948-.07c1.281-.058 2.504-.32 3.552-1.368 1.048-1.048 1.31-2.271 1.368-3.552.058-1.281.07-1.705.07-7.524s-.012-6.244-.07-7.524c-.058-1.281-.32-2.504-1.368-3.552C19.452.39 18.229.128 16.948.07 15.668.012 15.244 0 12 0z"/> <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/> </svg> </a> </div> </div> <div class="mt-8 text-center text-gray-400 text-sm"> &copy; 2025 Bali Moments. All rights reserved. </div> </div> </footer> <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p> <p>Jekyll requires blog post files to be named according to the following format:</p> <p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p> <p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p> <p>Jekyll also offers powerful support for code snippets:</p> <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bali Moments</title>
+    <meta name="description" content="Temukan cara terbaik untuk menjelajahi Bali dengan anggaran terbatas. Tips perjalanan hemat, destinasi menarik, dan pengalaman tak terlupakan di Pulau Dewata.">
+    <link rel="stylesheet" href="/balitour/assets/css/tailwind.css">
+    <!-- Add Google Fonts for Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans">
+    <nav id="navbar" class="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto flex justify-center items-center">
+    <!-- Left Navigation Links -->
+    <div class="hidden md:flex space-x-3 mr-6">
+      <a href="/" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Home</a>
+      <a href="/about.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">About</a>
+    </div>
+
+    <!-- Centered Logo -->
+    <a href="/" class="text-white text-xl font-bold font-lora drop-shadow-lg text-shadow-md mx-4">Bali Moments</a>
+
+    <!-- Right Navigation Link -->
+    <div class="hidden md:flex space-x-3 ml-6">
+      <a href="/contact.html" class="text-white hover:text-gray-200 transition-colors font-semibold drop-shadow-md text-shadow-sm">Contact</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden absolute right-4 text-white hover:text-gray-200 focus:outline-none" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-70 backdrop-blur-sm">
+    <a href="/" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Home</a>
+    <a href="/about.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">About</a>
+    <a href="/contact.html" class="block px-4 py-2 text-white hover:text-gray-200 font-semibold text-shadow-sm">Contact</a>
+  </div>
+</nav>
+
+<script>
+  // Navbar scroll behavior
+  const navbar = document.getElementById('navbar');
+  let lastScrollY = window.scrollY;
+
+  // Add CSS for text shadow
+  const style = document.createElement('style');
+  style.textContent = `
+    .text-shadow-sm {
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .text-shadow-md {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+  `;
+  document.head.appendChild(style);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      // Add background when scrolled down
+      navbar.classList.add('bg-black', 'bg-opacity-70');
+    } else {
+      // Remove background when at top
+      navbar.classList.remove('bg-black', 'bg-opacity-70');
+    }
+
+    if (window.scrollY > lastScrollY) {
+      // Hide navbar when scrolling down
+      navbar.style.transform = 'translateY(-100%)';
+    } else if (window.scrollY === 0) {
+      // Show navbar only when at the very top
+      navbar.style.transform = 'translateY(0)';
+    }
+    lastScrollY = window.scrollY;
+  });
+
+  // Toggle mobile menu visibility
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="/balitour/assets/images/hero-bg1.avif">
+</head>
+<body>
+<section id="hero" class="h-[120vh] flex items-start justify-center relative overflow-hidden">
+    <!-- Background container -->
+    <div id="hero-bg" class="absolute inset-0 z-0" style="background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 z-10"></div>
+
+    <div class="container relative mx-auto z-20 px-4 flex justify-center pt-80">
+        <div class="relative text-white max-w-3xl hero-text text-center">
+            <h1 class="text-4xl md:text-4xl font-bold mb-4 text-shadow">Nikmati Pengalaman</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow">Tak terlupakan di Bali</h1>
+            <p class="text-lg md:text-xl mb-6 text-shadow-light">Paket wisata lengkap untuk liburan tak terlupakan di Pulau Dewata - dari pantai eksotis, pura kuno, hingga pengalaman budaya yang memukau </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#" class="contact-btn bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Tanya Paket Wisata
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 z-30">
+        <button id="prev-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group" aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M7 15l5-5 5 5" />
+            </svg>
+        </button>
+        <button id="next-btn" class="bg-white bg-opacity-10 hover:bg-opacity-25 text-white p-2.5 rounded-full transition-all duration-300 backdrop-blur-sm shadow-lg border border-white border-opacity-20 group" aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M7 9l5 5 5-5" />
+            </svg>
+        </button>
+    </div>
+</section>
+
+<style>
+  #hero-bg {
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  .text-shadow-light {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  .hero-text {
+    position: relative;
+  }
+
+  .hero-text:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  #hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23f2efe6' d='M0,160C144,128,216,192,360,192C504,192,576,128,720,128C864,128,936,192,1080,192C1224,192,1296,128,1440,160L1440,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    background-size: 100% 150px;
+    z-index: 10;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroSection = document.getElementById('hero');
+    const heroBg = document.getElementById('hero-bg');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const images = [
+      '/balitour/assets/images/hero-bg1.avif',
+      '/balitour/assets/images/hero-bg2.avif',
+      '/balitour/assets/images/hero-bg3.avif',
+      '/balitour/assets/images/hero-bg4.avif'
+    ];
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    // Set initial background
+    heroBg.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+    // Function to change background with crossfade effect
+    function changeBackground(newIndex) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Create overlay div for crossfade effect
+      const nextImage = document.createElement('div');
+      nextImage.style.position = 'absolute';
+      nextImage.style.inset = '0';
+      nextImage.style.backgroundImage = `url('${images[newIndex]}')`;
+      nextImage.style.backgroundSize = 'cover';
+      nextImage.style.backgroundPosition = 'center';
+      nextImage.style.transition = 'opacity 1.5s ease-in-out';
+      nextImage.style.opacity = '0';
+      nextImage.style.zIndex = '0';
+
+      // Add overlay to hero section
+      heroSection.appendChild(nextImage);
+
+      // Small delay to ensure the element is rendered before starting transition
+      setTimeout(() => {
+        nextImage.style.opacity = '1';
+      }, 10);
+
+      // After transition completes
+      setTimeout(() => {
+        // Update the main background
+        heroBg.style.backgroundImage = `url('${images[newIndex]}')`;
+        // Remove the temporary overlay
+        heroSection.removeChild(nextImage);
+        // Update the current index
+        currentIndex = newIndex;
+        isTransitioning = false;
+      }, 1500);
+    }
+
+    // Go to next image
+    function nextImage() {
+      const nextIndex = (currentIndex + 1) % images.length;
+      changeBackground(nextIndex);
+    }
+
+    // Go to previous image
+    function prevImage() {
+      const prevIndex = (currentIndex - 1 + images.length) % images.length;
+      changeBackground(prevIndex);
+    }
+
+    // Add click event listeners to buttons
+    nextBtn.addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      nextImage();
+      autoSlideInterval = setInterval(nextImage, 7000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      prevImage();
+      autoSlideInterval = setInterval(nextImage, 7000);
+    });
+
+    // Change background every 7 seconds
+    let autoSlideInterval = setInterval(nextImage, 7000);
+  });
+</script>
+</body>
+</html>
+    <!-- Inquiry Modal -->
+<div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white text-gray-800 rounded-lg shadow-xl w-full max-w-4xl mx-4 overflow-hidden transform transition-all">
+        <!-- Modal Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-4">
+            <h3 class="text-xl font-bold text-white">Konsultasi Paket Wisata Bali</h3>
+            <button id="close-modal" class="absolute top-3 right-4 text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="p-6 flex flex-col md:flex-row gap-6">
+            <!-- Form Section -->
+            <div class="flex-1">
+                <form id="inquiry-form" class="space-y-4">
+                    <!-- Name Input -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <!-- Budget Selection -->
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Wisata</label>
+                        <select id="budget" name="budget" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="" disabled selected>Pilih rentang budget Anda</option>
+                            <option value="< Rp 5 juta">Kurang dari Rp 5 juta</option>
+                            <option value="Rp 5-10 juta">Rp 5 - 10 juta</option>
+                            <option value="Rp 10-15 juta">Rp 10 - 15 juta</option>
+                            <option value="> Rp 15 juta">Lebih dari Rp 15 juta</option>
+                        </select>
+                    </div>
+
+                    <!-- Length of Stay -->
+                    <div>
+                        <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Lama Menginap</label>
+                        <select id="duration" name="duration" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="" disabled selected>Pilih durasi liburan</option>
+                            <option value="3 hari">3 hari 2 malam</option>
+                            <option value="4 hari">4 hari 3 malam</option>
+                            <option value="5 hari">5 hari 4 malam</option>
+                            <option value="6+ hari">6+ hari</option>
+                        </select>
+                    </div>
+
+                    <!-- Total Price -->
+                    <div id="total-price-container" class="hidden pt-2">
+                        <span class="block text-sm font-medium text-gray-700 mb-1">Total Harga:</span>
+                        <span id="total-price" class="text-lg font-semibold text-gray-800"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Lanjutkan ke WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Add-ons Selection -->
+            <div class="flex-1">
+                <span class="block text-sm font-medium text-gray-700 mb-2">Fasilitas Tambahan</span>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="500000" data-name="Transportasi">
+                        <img src="/balitour/assets/images/addons/transportasi.avif" alt="Transportasi Pribadi" class="w-full h-32 object-cover" loading="lazy">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Transportasi Pribadi</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 500,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1000000" data-name="Fotografer">
+                        <img src="/balitour/assets/images/addons/fotografer.avif" alt="Jasa Fotografer" class="w-full h-32 object-cover" loading="lazy">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Jasa Fotografer</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 1,000,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="750000" data-name="Guide">
+                        <img src="/balitour/assets/images/addons/guide.avif" alt="Tour Guide" class="w-full h-32 object-cover" loading="lazy">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Tour Guide</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 750,000</span>
+                        </div>
+                    </div>
+                    <div class="addon-item cursor-pointer border border-gray-300 rounded-md overflow-hidden" data-price="1500000" data-name="Kuliner">
+                        <img src="/balitour/assets/images/addons/kuliner.avif" alt="Paket Kuliner" class="w-full h-32 object-cover" loading="lazy">
+                        <div class="p-2 text-center">
+                            <span class="text-sm text-gray-600">Paket Kuliner Premium</span>
+                            <span class="block text-sm font-bold text-gray-800">Rp 1,500,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+    const contactBtn = document.querySelectorAll('.contact-btn');
+    const inquiryModal = document.getElementById('inquiry-modal');
+    const closeModal = document.getElementById('close-modal');
+    const inquiryForm = document.getElementById('inquiry-form');
+
+    // Open modal when contact buttons are clicked
+    contactBtn.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        inquiryModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close modal when close button is clicked
+    closeModal.addEventListener('click', () => {
+      inquiryModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside the content
+    inquiryModal.addEventListener('click', (e) => {
+      if (e.target === inquiryModal) {
+        inquiryModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Handle form submission
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const budget = document.getElementById('budget').value;
+      const duration = document.getElementById('duration').value;
+
+      // Get selected addons from the addon-item elements with 'selected' class
+      const selectedAddonElements = document.querySelectorAll('.addon-item.selected');
+      const addons = Array.from(selectedAddonElements)
+        .map(item => {
+          const addonName = item.getAttribute('data-name');
+          const addonPrice = parseInt(item.getAttribute('data-price'));
+          return {
+            name: addonName,
+            price: addonPrice,
+            formattedPrice: `Rp ${addonPrice.toLocaleString('id-ID')}`
+          };
+        });
+
+      // Create WhatsApp message
+      let message = `Halo! Saya ${name} tertarik dengan paket wisata Bali.\n\n`;
+      message += `Budget: ${budget}\n`;
+      message += `Durasi: ${duration}\n\n`;
+
+      if (addons.length > 0) {
+        message += `Fasilitas Tambahan:\n`;
+        let totalAddons = 0;
+
+        addons.forEach(addon => {
+          message += `- ${addon.name} (${addon.formattedPrice})\n`;
+          totalAddons += addon.price;
+        });
+
+        message += `\nTotal Fasilitas: Rp ${totalAddons.toLocaleString('id-ID')}\n`;
+      }
+
+      message += `\nBisakah Anda memberi informasi lebih lanjut?`;
+
+      // Encode the message for URL
+      const encodedMessage = encodeURIComponent(message);
+
+      // Close modal
+      inquiryModal.classList.add('hidden');
+      document.body.style.overflow = '';
+
+      // Open WhatsApp with the message
+      window.open(`https://wa.me/628123456789?text=${encodedMessage}`, '_blank');
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const addonsCheckboxes = document.querySelectorAll('input[name="addons"]');
+
+    // Reset all checkboxes to unchecked state on page load
+    addonsCheckboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    const totalPriceContainer = document.getElementById('total-price-container');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Add initial opacity styles to enable transitions
+    totalPriceContainer.style.opacity = '0';
+    totalPriceContainer.style.transition = 'opacity 0.3s ease';
+
+    // Prices for each addon
+    const addonPrices = {
+        'Transportasi': 500000,
+        'Fotografer': 1000000,
+        'Guide': 750000,
+        'Kuliner': 1500000
+    };
+
+    // Update total price when checkboxes are toggled
+    addonsCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            let total = 0;
+            addonsCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += addonPrices[cb.value] || 0;
+                }
+            });
+
+            if (total > 0) {
+                totalPriceContainer.classList.remove('hidden');
+                // Use setTimeout to ensure the fade effect works after removing 'hidden'
+                setTimeout(() => {
+                    totalPriceContainer.style.opacity = '1';
+                }, 10);
+                totalPriceElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            } else {
+                totalPriceContainer.style.opacity = '0';
+                setTimeout(() => {
+                    totalPriceContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const addonItems = document.querySelectorAll('.addon-item');
+    const totalPriceElement = document.getElementById('total-price');
+    const totalPriceContainer = document.getElementById('total-price-container');
+
+    // Add initial opacity styles to enable transitions
+    totalPriceContainer.style.opacity = '0';
+    totalPriceContainer.style.transition = 'opacity 0.3s ease';
+
+    let selectedAddons = [];
+
+    addonItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const price = parseInt(item.getAttribute('data-price'));
+            const name = item.getAttribute('data-name');
+
+            if (item.classList.contains('selected')) {
+                item.classList.remove('selected');
+                item.classList.remove('border-blue-500', 'bg-blue-100');
+                item.classList.add('border-gray-300');
+                selectedAddons = selectedAddons.filter(addon => addon.name !== name);
+            } else {
+                item.classList.add('selected');
+                item.classList.remove('border-gray-300');
+                item.classList.add('border-blue-500', 'bg-blue-100');
+                selectedAddons.push({ name, price });
+            }
+
+            const total = selectedAddons.reduce((sum, addon) => sum + addon.price, 0);
+
+            if (total > 0) {
+                totalPriceContainer.classList.remove('hidden');
+                // Use setTimeout to ensure the fade effect works after removing 'hidden'
+                setTimeout(() => {
+                    totalPriceContainer.style.opacity = '1';
+                }, 10);
+                totalPriceElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            } else {
+                totalPriceContainer.style.opacity = '0';
+                setTimeout(() => {
+                    totalPriceContainer.classList.add('hidden');
+                }, 300);
+            }
+        });
+    });
+});
+</script>
+    <section class="py-16 bg-[#f2efe6] text-gray-800 relative overflow-hidden">
+    <!-- Decorative palm overlay -->
+    <div class="absolute top-0 left-0 h-full w-full opacity-10 pointer-events-none">
+        <img src="assets/images/pura.avif" alt="" class="h-full object-cover" loading="lazy" width="800" height="600">
+    </div>
+
+    <div class="container mx-auto px-6 max-w-6xl relative z-10">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-10">
+            <!-- Text Content (Left) -->
+            <div class="w-full md:w-1/2">
+                <h2 class="text-xl font-semibold text-[#3d7a41] mb-2">Kami yang Terbaik</h2>
+                <h2 class="text-5xl font-bold text-gray-800 mb-6 font-display italic">Tentang Kami</h2>
+
+                <p class="text-gray-700 mb-6">
+                    Tur kami menawarkan berbagai tujuan yang memenuhi beragam minat wisatawan. Mulai dari pantai berpasir yang dibasuh matahari dengan lautan biru yang jernih, hingga pemandangan pegunungan yang menakjubkan, danau yang tenang, dan hutan yang rimbun, kami siap melayani Anda.
+                </p>
+
+                <p class="text-gray-700 mb-8">
+                    Jangan sia-siakan kesempatan ini! Kami memiliki penawaran menarik: 50 orang pertama yang mendaftar untuk tur akan menerima diskon 15% untuk pembelian dari mitra kami.
+                </p>
+
+
+                <a href="#" class="contact-btn inline-block border-2 border-[#3d7a41] text-[#3d7a41] hover:bg-[#3d7a41] hover:text-white px-8 py-3 rounded-md font-semibold transition-all duration-300 flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>Tanya Paket Wisata</span>
+                </a>
+            </div>
+
+            <!-- Images Stack (Right) -->
+            <div class="w-full md:w-1/2 relative h-[500px]">
+                <!-- Image 1 (back) -->
+                <div class="absolute right-0 top-0 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 1;">
+                    <img src="assets/images/highlight/buah.avif" alt="Buah di Bali" class="w-full h-full object-cover" loading="lazy" width="800" height="600">
+                </div>
+
+                <!-- Image 2 (middle) -->
+                <div class="absolute right-28 top-10 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 2;">
+                    <img src="assets/images/highlight/sunset.avif" alt="Matahari terbenam di Bali" class="w-full h-full object-cover" loading="lazy" width="800" height="600">
+                </div>
+
+                <!-- Image 3 (front) -->
+                <div class="absolute right-14 top-36 w-3/4 h-80 rounded-2xl overflow-hidden shadow-xl" style="z-index: 3;">
+                    <img src="assets/images/highlight/ricefield.avif" alt="Sawah di Bali" class="w-full h-full object-cover" loading="lazy" width="800" height="600">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="py-16 bg-[#f2efe6]" data-aos="fade-up">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 font-lora">Mengapa Memilih Kami</h2>
+      <p class="text-gray-600 mt-4 max-w-3xl mx-auto">Kami tidak hanya menawarkan perjalanan, tetapi pengalaman berharga yang akan menjadi kenangan seumur hidup</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Pengalaman Otentik</h3>
+        <p class="text-gray-600">Kami menghubungkan Anda dengan pengalaman lokal yang asli, bukan hanya destinasi turis umum. Rasakan Bali yang sesungguhnya melalui mata penduduk setempat.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Pemandu Lokal Berpengalaman</h3>
+        <p class="text-gray-600">Pemandu kami adalah penduduk asli Bali yang menguasai budaya, sejarah, dan rahasia tersembunyi pulau ini. Mereka akan membuat perjalanan Anda lebih bermakna.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+        <div class="w-16 h-16 bg-[#e6b97a] rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Paket yang Dapat Disesuaikan</h3>
+        <p class="text-gray-600">Tidak ada dua pelanggan yang identik. Kami menyesuaikan setiap perjalanan berdasarkan minat, anggaran, dan waktu Anda untuk pengalaman yang benar-benar personal.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 italic">"Kami telah membawa lebih dari 10,000 pelancong untuk mengalami keajaiban Bali selama 15 tahun terakhir"</p>
+      <div class="flex justify-center gap-4 mt-6">
+        <div class="flex items-center">
+          <div class="flex space-x-1">
+            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+          </div>
+          <span class="ml-2 text-gray-800 font-semibold">4.9/5</span>
+        </div>
+        <span class="text-gray-600">dari 500+ ulasan pelanggan</span>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="py-16 bg-[#f2efe6]" data-aos="fade-up">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 font-lora">Destinasi Populer di Bali</h2>
+      <p class="text-gray-600 mt-4 max-w-3xl mx-auto">Jelajahi tempat-tempat menakjubkan yang dapat Anda kunjungi selama perjalanan Anda</p>
+    </div>
+
+    <!-- Destination Navigation Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="destination-btn px-6 py-2 rounded-full bg-[#d4a76c] text-white font-medium hover:bg-[#c3965e] transition-colors active" data-destination="ubud">Ubud</button>
+      <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="denpasar">Denpasar</button>
+      <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="sanur">Sanur</button>
+      <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="kuta">Kuta</button>
+      <button class="destination-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors" data-destination="uluwatu">Uluwatu</button>
+    </div>
+
+    <!-- Destination Content Containers -->
+    <div class="destination-content-wrapper">
+      <!-- Ubud Content -->
+      <div class="destination-content flex flex-col md:flex-row gap-8 active" id="ubud-content">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ubud: Pusat Budaya & Seni Bali</h3>
+          <p class="text-gray-600 mb-4">Ubud merupakan jantung budaya dan seni di Bali, terletak di tengah pedalaman pulau di antara sawah bertingkat dan hutan hujan yang lebat. Dikenal sebagai pusat kesenian dan kerajinan Bali, Ubud menawarkan pengalaman yang menenangkan jauh dari keramaian pantai.</p>
+          <p class="text-gray-600 mb-4">Di Ubud, Anda dapat mengunjungi galeri seni lokal, menyaksikan pertunjukan tari tradisional, mengikuti kelas yoga, atau sekadar berjalan-jalan di Monkey Forest yang terkenal. Kawasan ini juga dikenal dengan sawahnya yang menakjubkan, terutama di Tegallalang.</p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Seni & Budaya</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Alam & Hutan</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Monkey Forest</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sawah Bertingkat</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+            <img src="assets/images/destinations/ubud.avif" alt="Ubud in Bali" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Denpasar Content -->
+      <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="denpasar-content">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Denpasar: Ibu Kota Bali yang Dinamis</h3>
+          <p class="text-gray-600 mb-4">Denpasar adalah ibu kota dan kota terbesar di Bali, menawarkan perpaduan unik antara kehidupan modern dan tradisi Bali. Sebagai pusat pemerintahan dan bisnis, kota ini berdenyut dengan aktivitas sepanjang hari.</p>
+          <p class="text-gray-600 mb-4">Kunjungi Pasar Badung untuk merasakan suasana pasar tradisional yang ramai, atau lihat koleksi seni dan artefak sejarah di Museum Bali. Jangan lewatkan Monumen Bajra Sandhi yang mengesankan, yang mengenang perjuangan rakyat Bali untuk kemerdekaan.</p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Kota & Kehidupan Urban</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pasar Tradisional</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Museum</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Monumen Sejarah</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+            <img src="assets/images/destinations/denpasar.avif" alt="Denpasar in Bali" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Sanur Content -->
+      <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="sanur-content">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sanur: Pantai Tenang dengan Pesona Klasik</h3>
+          <p class="text-gray-600 mb-4">Sanur adalah kawasan pantai yang tenang dan lebih santai di timur Bali, sempurna bagi mereka yang mencari suasana yang lebih damai dibandingkan dengan area wisata lainnya. Dengan pantai berpasir putih yang landai dan perairan yang tenang, Sanur cocok untuk keluarga dan wisatawan yang lebih dewasa.</p>
+          <p class="text-gray-600 mb-4">Nikmati matahari terbit yang spektakuler, jelajahi jalur pantai sepanjang 5 km yang diperkeras, atau berlayar dengan perahu tradisional. Sanur juga memiliki beragam restoran, kafe, dan butik yang menarik untuk dijelajahi.</p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pantai Tenang</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sunrise View</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Olahraga Air</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Jalur Bersepeda</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+            <img src="assets/images/destinations/sanur.avif" alt="Sanur in Bali" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Kuta Content -->
+      <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="kuta-content">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Kuta: Surga Peselancar & Kehidupan Malam</h3>
+          <p class="text-gray-600 mb-4">Kuta adalah salah satu daerah wisata paling terkenal di Bali, dengan pantai berpasir panjang yang ideal untuk berselancar dan menikmati matahari terbenam yang menakjubkan. Area ini terkenal dengan kehidupan malam yang ramai, berbagai pilihan belanja, dan suasana liburan yang semarak.</p>
+          <p class="text-gray-600 mb-4">Bagi pemula dalam berselancar, Kuta menawarkan kondisi ombak yang sempurna dan banyak sekolah selancar. Setelah matahari terbenam, jelajahi berbagai klub malam yang ramai, restoran internasional, dan pasar tradisional di sepanjang Jalan Legian.</p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Surfing</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Sunset Beach</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Nightlife</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Shopping</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+            <img src="assets/images/destinations/kuta.avif" alt="Kuta in Bali" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Uluwatu Content -->
+      <div class="destination-content flex flex-col md:flex-row gap-8 hidden" id="uluwatu-content">
+        <div class="w-full md:w-1/2">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Uluwatu: Tebing Spektakuler & Pura Kuno</h3>
+          <p class="text-gray-600 mb-4">Terletak di ujung selatan semenanjung Bukit di Bali, Uluwatu terkenal dengan tebing kapur yang spektakuler dan salah satu pura paling suci di Bali, Pura Luhur Uluwatu. Kawasan ini menawarkan pemandangan laut yang menakjubkan dan beberapa pantai tersembunyi yang indah.</p>
+          <p class="text-gray-600 mb-4">Saksikan pertunjukan tari Kecak tradisional saat matahari terbenam di Pura Uluwatu, atau nikmati ombak kelas dunia di beberapa titik selancar terbaik di Bali seperti Padang Padang, Bingin, dan Dreamland. Uluwatu juga menjadi rumah bagi resor mewah dan beach club eksklusif.</p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Pura & Candi</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Tebing Dramatis</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Tari Kecak</span>
+            <span class="px-4 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Surfing Pro</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+            <img src="assets/images/destinations/uluwatu.avif" alt="Uluwatu in Bali" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for Destination Navigation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const destinationButtons = document.querySelectorAll('.destination-btn');
+      const destinationContents = document.querySelectorAll('.destination-content');
+
+      destinationButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const destination = button.getAttribute('data-destination');
+
+          // Update active button
+          destinationButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-[#e6b97a]', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+          });
+          button.classList.add('active', 'bg-[#e6b97a]', 'text-white');
+          button.classList.remove('bg-gray-200', 'text-gray-700');
+
+          // Show relevant content
+          destinationContents.forEach(content => {
+            content.classList.add('hidden');
+          });
+          document.getElementById(`${destination}-content`).classList.remove('hidden');
+        });
+      });
+    });
+  </script>
+</section>
+    <section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-gray-800 font-lora">Apa Kata Mereka? 🌟</h2>
+      <p class="text-gray-600 mt-2">Cerita seru dari mereka yang sudah menikmati keindahan Bali!</p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Placeholder image for Sarah" class="w-16 h-16 object-cover rounded-full mx-auto mb-4" loading="lazy">
+        <p class="text-gray-600 italic">"Bali benar-benar surga dunia! Pantainya indah, makanannya enak, dan orang-orangnya ramah banget. Liburan terbaik yang pernah saya alami!"</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- Sarah, Jakarta</h3>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Placeholder image for John" class="w-16 h-16 object-cover rounded-full mx-auto mb-4" loading="lazy">
+        <p class="text-gray-600 italic">"Saya sangat menikmati waktu saya di Bali. Canoeing di danau yang tenang adalah pengalaman yang tidak akan saya lupakan. Terima kasih Bali Moments!"</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- John, Sydney</h3>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Placeholder image for Maria" class="w-16 h-16 object-cover rounded-full mx-auto mb-4" loading="lazy">
+        <p class="text-gray-600 italic">"Monyet-monyet di Canggu memang nakal, tapi itu bagian dari keseruannya! Bali selalu punya cerita unik di setiap sudutnya."</p>
+        <div class="mt-4 text-right">
+          <h3 class="text-lg font-bold text-gray-800">- Maria, Surabaya</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-black bg-opacity-70 text-white w-12 h-12 rounded-full shadow-lg opacity-0 transition-opacity duration-300 flex items-center justify-center hover:bg-opacity-90" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            // Show button when user scrolls past 75% of page height
+            const scrollPosition = window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const viewportHeight = window.innerHeight;
+
+            if (scrollPosition > (pageHeight - viewportHeight) * 0.75) {
+                scrollToTopBtn.classList.remove('opacity-0');
+                scrollToTopBtn.classList.add('opacity-100');
+            } else {
+                scrollToTopBtn.classList.remove('opacity-100');
+                scrollToTopBtn.classList.add('opacity-0');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            // Simple scroll to top without overlay animation
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+    <style>
+        @keyframes pulseShadow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        .animate-pulse-subtle {
+            animation: pulseShadow 0.8s ease-in-out;
+        }
+    </style>
+    <footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto px-4">
+    <!-- Footer Content -->
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <!-- Logo and Tagline -->
+      <div class="text-center md:text-left">
+        <h2 class="text-xl font-bold font-lora">Bali Moments</h2>
+        <p class="text-gray-400 text-sm">Liburan terbaik untuk kenangan tak terlupakan 🌴✨</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex space-x-6">
+        <a href="/" class="text-gray-400 hover:text-white text-sm">Home</a>
+        <a href="/about.html" class="text-gray-400 hover:text-white text-sm">About</a>
+        <a href="/contact.html" class="text-gray-400 hover:text-white text-sm">Contact</a>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.917c-1.504 0-1.796.715-1.796 1.763v2.31h3.591l-.467 3.622h-3.124V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.94 13.94 0 011.671 3.149a4.916 4.916 0 001.523 6.573 4.897 4.897 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.918 4.918 0 004.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A9.936 9.936 0 0024 4.557z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.316.975.975 1.254 2.242 1.316 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.316 3.608-.975.975-2.242 1.254-3.608 1.316-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.316-3.608.975-.975 2.242-1.254 3.608-1.316 1.265-.058 1.645-.07 4.849-.07zm0-2.163C8.756 0 8.332.012 7.052.07 5.771.128 4.548.39 3.5 1.438c-1.048 1.048-1.31 2.271-1.368 3.552C2.012 5.756 2 6.18 2 12s.012 6.244.07 7.524c.058 1.281.32 2.504 1.368 3.552 1.048 1.048 2.271 1.31 3.552 1.368C8.332 23.988 8.756 24 12 24s3.668-.012 4.948-.07c1.281-.058 2.504-.32 3.552-1.368 1.048-1.048 1.31-2.271 1.368-3.552.058-1.281.07-1.705.07-7.524s-.012-6.244-.07-7.524c-.058-1.281-.32-2.504-1.368-3.552C19.452.39 18.229.128 16.948.07 15.668.012 15.244 0 12 0z"/>
+            <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-8 text-center text-gray-400 text-sm">
+      &copy; 2025 Bali Moments. All rights reserved.
+    </div>
+  </div>
+</footer>
+    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>Jekyll requires blog post files to be named according to the following format:</p>
+
+<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
   <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 <span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure> <p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p> <script>tailwind.config={theme:{extend:{fontFamily:{sans:["Source Sans Pro","sans-serif"],lora:["Lora","serif"]}}}},document.addEventListener("DOMContentLoaded",()=>{document.getElementById("social-icons");document.querySelectorAll("#social-icons a").forEach(e=>{e.classList.add("bg-opacity-60")})});</script> </body> </html>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+
+
+
+
+
+    <script>
+        // Social Icons visibility adjustment based on scroll position
+        document.addEventListener('DOMContentLoaded', () => {
+            // Keep social icons visible against any background
+            const socialIcons = document.getElementById('social-icons');
+
+            // Initial state with higher opacity
+            document.querySelectorAll('#social-icons a').forEach(icon => {
+                icon.classList.add('bg-opacity-60');
+            });
+
+            // Add aria-label attributes to the social media links
+            document.querySelectorAll('#social-icons a').forEach((icon, index) => {
+                const labels = ['Facebook', 'Twitter', 'Instagram'];
+                icon.setAttribute('aria-label', labels[index]);
+            });
+        });
+    </script>
+</body>
+</html>
